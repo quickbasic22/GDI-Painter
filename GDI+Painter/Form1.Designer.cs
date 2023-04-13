@@ -39,8 +39,8 @@
             btnBrushSettings = new Button();
             PenWidthCounter = new NumericUpDown();
             TransCounter = new NumericUpDown();
-            label1 = new Label();
-            label2 = new Label();
+            lblPenWidth = new Label();
+            lblTranspency = new Label();
             ((System.ComponentModel.ISupportInitialize)PenWidthCounter).BeginInit();
             ((System.ComponentModel.ISupportInitialize)TransCounter).BeginInit();
             SuspendLayout();
@@ -144,41 +144,44 @@
             PenWidthCounter.Name = "PenWidthCounter";
             PenWidthCounter.Size = new Size(64, 23);
             PenWidthCounter.TabIndex = 8;
+            PenWidthCounter.Value = new decimal(new int[] { 12, 0, 0, 0 });
             // 
             // TransCounter
             // 
             TransCounter.Location = new Point(666, 61);
+            TransCounter.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             TransCounter.Name = "TransCounter";
             TransCounter.Size = new Size(64, 23);
             TransCounter.TabIndex = 9;
+            TransCounter.Value = new decimal(new int[] { 255, 0, 0, 0 });
             // 
-            // label1
+            // lblPenWidth
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(462, 12);
-            label1.Name = "label1";
-            label1.Size = new Size(90, 21);
-            label1.TabIndex = 10;
-            label1.Text = "Pen Width";
+            lblPenWidth.AutoSize = true;
+            lblPenWidth.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblPenWidth.Location = new Point(462, 12);
+            lblPenWidth.Name = "lblPenWidth";
+            lblPenWidth.Size = new Size(90, 21);
+            lblPenWidth.TabIndex = 10;
+            lblPenWidth.Text = "Pen Width";
             // 
-            // label2
+            // lblTranspency
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(654, 12);
-            label2.Name = "label2";
-            label2.Size = new Size(111, 21);
-            label2.TabIndex = 11;
-            label2.Text = "Transparency";
+            lblTranspency.AutoSize = true;
+            lblTranspency.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTranspency.Location = new Point(654, 12);
+            lblTranspency.Name = "lblTranspency";
+            lblTranspency.Size = new Size(111, 21);
+            lblTranspency.TabIndex = 11;
+            lblTranspency.Text = "Transparency";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1114, 728);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(lblTranspency);
+            Controls.Add(lblPenWidth);
             Controls.Add(TransCounter);
             Controls.Add(PenWidthCounter);
             Controls.Add(btnBrushSettings);
@@ -217,7 +220,7 @@
         private Button btnBrushSettings;
         private NumericUpDown PenWidthCounter;
         private NumericUpDown TransCounter;
-        private Label label1;
-        private Label label2;
+        private Label lblPenWidth;
+        private Label lblTranspency;
     }
 }

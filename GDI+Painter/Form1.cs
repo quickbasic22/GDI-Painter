@@ -35,6 +35,8 @@ namespace GDI_Painter
             // default pen and brush
             curPen = new Pen(Color.DarkBlue, 15f);
             curBrush = new SolidBrush(Color.Indigo);
+            lblPenWidth.BackColor = Color.Blue;
+            lblTranspency.BackColor = Color.RebeccaPurple;
         }
 
         private void btnDrawRectangle_Click(object sender, EventArgs e)
@@ -108,11 +110,11 @@ namespace GDI_Painter
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             // Set the pen's color
-            curPen.Color = Color.FromArgb(Convert.ToInt16(TransCounter.Value.ToString()), btnPenSettings.BackColor.R, btnPenSettings.BackColor.G, btnPenSettings.BackColor.G);
+            curPen.Color = Color.FromArgb(Convert.ToInt16(TransCounter.Value.ToString()), lblPenWidth.BackColor.R, lblPenWidth.BackColor.G, lblPenWidth.BackColor.G);
             // Set the pen's width
             curPen.Width = (float)PenWidthCounter.Value;
             // Set the brush's color
-            curBrush.Color = Color.FromArgb(Convert.ToInt16(TransCounter.Value.ToString()), btnBrushSettings.BackColor.R, btnBrushSettings.BackColor.G, btnBrushSettings.BackColor.B);
+            curBrush.Color = Color.FromArgb(Convert.ToInt16(TransCounter.Value.ToString()), lblTranspency.BackColor.R, lblTranspency.BackColor.G, lblTranspency.BackColor.B);
 
             diffX = x - curX;
             diffY = y - curY;
@@ -163,11 +165,11 @@ namespace GDI_Painter
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             // Set current pen's color
-            curPen.Color = Color.FromArgb(Convert.ToInt16(TransCounter.Value.ToString()), btnPenSettings.BackColor.R, btnPenSettings.BackColor.G, btnPenSettings.BackColor.B);
+            curPen.Color = Color.FromArgb(Convert.ToInt16(TransCounter.Value.ToString()), lblPenWidth.BackColor.R, lblPenWidth.BackColor.G, lblPenWidth.BackColor.B);
             // Set pen's width
             curPen.Width = (float)PenWidthCounter.Value;
             // Set current brush's color
-            curBrush.Color = Color.FromArgb(Convert.ToInt16(TransCounter.Value.ToString()), btnBrushSettings.BackColor.R, btnBrushSettings.BackColor.G, btnBrushSettings.BackColor.B);
+            curBrush.Color = Color.FromArgb(Convert.ToInt16(TransCounter.Value.ToString()), lblTranspency.BackColor.R, lblTranspency.BackColor.G, lblTranspency.BackColor.B);
 
             Graphics g = e.Graphics;
             // If dragMode is true, draw the selected graphics shape
@@ -216,14 +218,25 @@ namespace GDI_Painter
         {
             ColorDialog colorDlg = new ColorDialog();
             colorDlg.ShowDialog();
-            btnPenSettings.BackColor = colorDlg.Color;
+            lblPenWidth.BackColor = colorDlg.Color;
+            lblPenWidth.ForeColor = Color.Blue;
+            if (lblPenWidth.BackColor == lblPenWidth.ForeColor)
+            {
+                lblPenWidth.ForeColor = Color.LightGreen;
+            }
+
         }
 
         private void btnBrushSettings_Click(object sender, EventArgs e)
         {
             ColorDialog colorDlg = new ColorDialog();
             colorDlg.ShowDialog();
-            btnBrushSettings.BackColor = colorDlg.Color;
+            lblTranspency.BackColor = colorDlg.Color;
+            lblTranspency.ForeColor = Color.Blue;
+            if (lblTranspency.BackColor == lblTranspency.ForeColor)
+            {
+                lblTranspency.ForeColor = Color.LightCyan;
+            }
         }
     }
 }
