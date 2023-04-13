@@ -107,6 +107,13 @@ namespace GDI_Painter
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
+            // Set the pen's color
+            curPen.Color = Color.FromArgb(Convert.ToInt16(TransCounter.Value.ToString()), btnPenSettings.BackColor.R, btnPenSettings.BackColor.G, btnPenSettings.BackColor.G);
+            // Set the pen's width
+            curPen.Width = (float)PenWidthCounter.Value;
+            // Set the brush's color
+            curBrush.Color = Color.FromArgb(Convert.ToInt16(TransCounter.Value.ToString()), btnBrushSettings.BackColor.R, btnBrushSettings.BackColor.G, btnBrushSettings.BackColor.B);
+
             diffX = x - curX;
             diffY = y - curY;
             switch (drawIndex)
@@ -135,7 +142,7 @@ namespace GDI_Painter
                         curGraphics.FillRectangle(curBrush, curX, curY, diffX, diffY);
                         break;
                     }
-                    case 5:
+                case 5:
                     {
                         // Fill the ellipse
                         curGraphics.FillEllipse(curBrush, curX, curY, diffX, diffY);
@@ -155,6 +162,13 @@ namespace GDI_Painter
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
+            // Set current pen's color
+            curPen.Color = Color.FromArgb(Convert.ToInt16(TransCounter.Value.ToString()), btnPenSettings.BackColor.R, btnPenSettings.BackColor.G, btnPenSettings.BackColor.B);
+            // Set pen's width
+            curPen.Width = (float)PenWidthCounter.Value;
+            // Set current brush's color
+            curBrush.Color = Color.FromArgb(Convert.ToInt16(TransCounter.Value.ToString()), btnBrushSettings.BackColor.R, btnBrushSettings.BackColor.G, btnBrushSettings.BackColor.B);
+
             Graphics g = e.Graphics;
             // If dragMode is true, draw the selected graphics shape
             if (dragMode)
@@ -196,6 +210,20 @@ namespace GDI_Painter
             curPen.Dispose();
             curBrush.Dispose();
             curGraphics.Dispose();
+        }
+
+        private void btnPenSettings_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDlg = new ColorDialog();
+            colorDlg.ShowDialog();
+            btnPenSettings.BackColor = colorDlg.Color;
+        }
+
+        private void btnBrushSettings_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDlg = new ColorDialog();
+            colorDlg.ShowDialog();
+            btnBrushSettings.BackColor = colorDlg.Color;
         }
     }
 }
